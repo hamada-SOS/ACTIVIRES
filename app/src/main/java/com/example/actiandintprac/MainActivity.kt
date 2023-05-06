@@ -30,12 +30,5 @@ class MainActivity : AppCompatActivity() {
         binding.recyclerView2.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
-        val cardAdapter = CardAdapter(this)
-        cardAdapter.onItemClick = {
-            val intent = Intent(this, MainActivity2::class.java)
-                startActivity(intent)
-
-        }
-
     }
 }
