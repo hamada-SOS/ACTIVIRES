@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:padding="32dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:scrollbars="vertical">
 
     <TextView
         android:id="@+id/textView"
@@ -39,9 +40,15 @@
         android:textSize="26sp"
         android:text="Search"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView2"
+    <Button
+        android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-         />
+        android:text="Button" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView2"
+        android:layout_width="351dp"
+        android:layout_height="313dp" />
+
 </LinearLayout>

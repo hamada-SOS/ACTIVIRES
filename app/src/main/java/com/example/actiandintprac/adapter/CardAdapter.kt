@@ -1,33 +1,44 @@
 package com.example.actiandintprac.adapter
 
 import android.content.Context
-import android.graphics.ColorSpace
 import android.view.LayoutInflater
-import android.view.View.OnClickListener
+import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.actiandintprac.databinding.CardItemsBinding
+import com.example.actiandintprac.R
 import com.example.actiandintprac.model.Datasource
-import com.example.actiandintprac.model.Card as Card
 
-class CardAdapter(context: Context) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
+class CardAdapter(context: Context, private val listener: RecyclerViewEvent) :
+    RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
     val dataset = Datasource.cards
 
-    var onItemClick : ((Card) -> Unit)? = null
+
+    inner class CardViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
+
+        init {
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(p0: View?) {
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION) {
+                listener.onItemClick(position)
+            }
+        }
+
+        val cardName: TextView = view.findViewById(R.id.cardName)
+        val cardPrice: TextView = view.findViewById(R.id.cardPrice)
+        val cardImage: ImageView = view.findViewById(R.id.cardImage)
 
 
-
-
-
-
-    class CardViewHolder(val binding: CardItemsBinding) : RecyclerView.ViewHolder(binding.root){
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val adapterlayout =
-            CardItemsBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CardViewHolder(adapterlayout)
+        val view: View =
+            LayoutInflater.from(parent.context).inflate(R.layout.card_items, parent, false)
+        return CardViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -36,19 +47,16 @@ class CardAdapter(context: Context) : RecyclerView.Adapter<CardAdapter.CardViewH
 
     override fun onBindViewHolder(holder: CardViewHolder, position: Int) {
         val item = dataset[position]
-        holder.binding.cardName.text = item.cardname
-        holder.binding.cardPrice.text = item.price
-        holder.binding.cardImage.setImageResource(item.image)
-        holder.itemView.setOnClickListener {
-            onItemClick?.invoke(item)
-        }
-
+        holder.cardName.text = item.cardname
+        holder.cardPrice.text = item.price
+        holder.cardImage.setImageResource(item.image)
 
 
     }
 
-
-
+    interface RecyclerViewEvent {
+        fun onItemClick(position: Int)
+    }
 
 }
 

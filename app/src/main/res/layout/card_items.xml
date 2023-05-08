@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="wrap_content"
+    android:id="@+id/line1"
     android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:background="@drawable/cardstyle"
     android:padding="16dp">
 
     <ImageView
         android:id="@+id/cardImage"
         android:layout_width="156dp"
         android:layout_height="149dp"
+        android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
