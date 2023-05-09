@@ -42,4 +42,13 @@
         app:layout_constraintTop_toBottomOf="@+id/name"
         app:layout_constraintVertical_bias="0.45999998"
         tools:textSize="20sp" />
+
+    <Button
+        android:id="@+id/showBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/price"
+        tools:layout_editor_absoluteX="157dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

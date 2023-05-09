@@ -13,4 +13,16 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    
+    <style name="BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">
+            @color/white
+        </item>
+
+    </style>
+    <style name="BottomSheetDiologTheme." parent="Theme.Material3.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">
+            @style/BottomSheetStyle
+        </item>
+    </style>
 </resources>

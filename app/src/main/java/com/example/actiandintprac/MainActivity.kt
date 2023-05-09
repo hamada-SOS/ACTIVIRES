@@ -42,10 +42,8 @@ class MainActivity : AppCompatActivity(), CardAdapter.RecyclerViewEvent{
             it.putExtra("Image", cards.get(position).image )
             it.putExtra("Name", cards.get(position).cardname )
             it.putExtra("Price", cards.get(position).price )
-
-            startActivity(intent)
         }
-
+        startActivity(intent)
     }
 
 
