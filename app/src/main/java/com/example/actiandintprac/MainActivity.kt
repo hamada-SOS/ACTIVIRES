@@ -17,7 +17,7 @@ import com.example.actiandintprac.model.Datasource
 class MainActivity : AppCompatActivity(), CardAdapter.RecyclerViewEvent{
 
 
-    @SuppressLint("SuspiciousIndentation")
+    val cards = Datasource.cards
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -38,8 +38,14 @@ class MainActivity : AppCompatActivity(), CardAdapter.RecyclerViewEvent{
 
 
     override fun onItemClick(position: Int) {
-        val intent = Intent(this, MainActivity2::class.java)
-        startActivity(intent )
+        val intent = Intent(this, MainActivity2::class.java).also{
+            it.putExtra("Image", cards.get(position).image )
+            it.putExtra("Name", cards.get(position).cardname )
+            it.putExtra("Price", cards.get(position).price )
+
+            startActivity(intent)
+        }
+
     }
 
 
